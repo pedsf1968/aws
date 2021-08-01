@@ -1,0 +1,71 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: >-
+  AWS CloudFormation VPC Template
+Resources:
+  MyVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      Tags:
+        - Key: "Name"
+          Value: "MainVPC"
+  PrivateSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3a
+      CidrBlock: 10.0.0.0/24
+      Tags:
+        - Key: "Name"
+          Value: "MainVPC-public-b"
+        - Key: "Type"
+          Value: "Private"
+        - Key: "Region"
+          Value: "Paris"
+        - Key: "Zone"
+          Value: "A"
+      VpcId: !Ref MyVPC
+  PrivateSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3b
+      CidrBlock: 10.0.1.0/24
+      Tags:
+        - Key: "Name"
+          Value: "MainVPC-public-b"
+        - Key: "Type"
+          Value: "Private"
+        - Key: "Region"
+          Value: "Paris"
+        - Key: "Zone"
+          Value: "B"
+      VpcId: !Ref MyVPC
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3a
+      CidrBlock: 10.0.100.0/24
+      Tags:
+        - Key: "Name"
+          Value: "MainVPC-public-b"
+        - Key: "Type"
+          Value: "Public"
+        - Key: "Region"
+          Value: "Paris"
+        - Key: "Zone"
+          Value: "A"
+      VpcId: !Ref MyVPC
+  PublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      AvailabilityZone: eu-west-3b
+      CidrBlock: 10.0.101.0/24
+      Tags:
+        - Key: "Name"
+          Value: "MainVPC-public-b"
+        - Key: "Type"
+          Value: "Public"
+        - Key: "Region"
+          Value: "Paris"
+        - Key: "Zone"
+          Value: "B"
+      VpcId: !Ref MyVPC
