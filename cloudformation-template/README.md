@@ -26,3 +26,13 @@ Network creation file with public and privates subnets, internet gateway for all
 - subnet 10.0.1.0/24 private in availability zone B route by nat gateway
 - subnet 10.0.100.0/24 public in availability zone A route by internet gateway 
 - subnet 10.0.101.0/24 public in availability zone B route by internet gateway
+
+# Infra
+## launchConfig.yaml
+Create Security group link to a specify VPV and a launch configuration with personalized AMI.
+
+## fullLaunchConfig.yaml
+Create a launch configuration with :
+- Autoscaling group with 1 instance AMI
+- Loadbalancer linked to target group
+- Target group for created instances
